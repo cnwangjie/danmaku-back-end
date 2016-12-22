@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <title>纵览 | DANMAKU</title>
+
+        <!-- Bootstrap core CSS -->
+        <link href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+
+        <style>
+        body {
+          padding-top: 70px;
+        }
+        .container {
+            max-width: 800px;
+        }
+        </style>
+    </head>
+
+    <body>
+        <!-- Fixed navbar -->
+        <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">DANMAKU</a>
+                </div>
+                <div id="navbar" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="./home">纵览</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown">{{ user }} <span class="caret"></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="./logout">登出</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div><!--/.nav-collapse -->
+            </div>
+        </nav>
+
+        <div class="container">
+            <form class="form-inline" role="form">
+                <div class="form-group">
+                    <input type="creater" class="form-control" type="text" name="name"></input>
+                </div>
+                <div class="form-group">
+                    <a id="creater" class="creater btn btn-primary">
+                        创建
+                    </a>
+                </div>
+            </form>
+                {{#if sites}}
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>名称</th>
+                                <th>域名</th>
+                                <th>创建时间</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each sites}}
+                            <tr id="{{ this.id }}">
+                                <td>{{ this.id }}</td>
+                                <td>{{ this.name }}</td>
+                                <td>{{ this.domain }}</td>
+                                <td>{{ this.created_at }}</td>
+                            </tr>
+                            {{/each}}
+                        </tbody>
+                    </table>
+                {{else}}
+                    <h1>你还没有创建任何站点，快点创建一个吧</h1>
+                {{/if}}
+        </div>
+
+        <!-- Bootstrap core JavaScript
+        ================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+        <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+            })
+        </script>
+    </body>
+</html>
