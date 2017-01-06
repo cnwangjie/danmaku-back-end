@@ -1,5 +1,6 @@
-let app = require('express')()
-var bodyParser = require('body-parser');
+let express = require('express')
+let app = express()
+let bodyParser = require('body-parser');
 let cookieParser = require('cookie-parser')
 let server = require('http').createServer(app)
 let io = require('socket.io')(server)
@@ -24,6 +25,8 @@ server.listen(3000) // socket port
 
 app.engine('handlebars', hbs.engine)
 app.set('view engine', 'handlebars')
+
+app.use(express.static('resources'))
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(cookieParser())

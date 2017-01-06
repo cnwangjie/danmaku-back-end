@@ -11,7 +11,7 @@
         <title>纵览 | DANMAKU</title>
 
         <!-- Bootstrap core CSS -->
-        <link href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+        <link href="./bootstrap.min.css" rel="stylesheet">
 
         <style>
         body {
@@ -55,13 +55,14 @@
         <div class="container">
             <form class="form-inline" role="form">
                 <div class="form-group">
-                    <input type="creater" class="form-control" type="text" name="name"></input>
+                    <input id="creater-sitename" type="creater" class="form-control" type="text" name="name" placeholder="网站名称"></input>
                 </div>
                 <div class="form-group">
-                    <a id="creater" class="creater btn btn-primary">
+                    <a id="creater-btn" class="creater btn btn-primary">
                         创建
                     </a>
                 </div>
+
             </form>
                 {{#if sites}}
                     <table class="table table-hover">
@@ -92,10 +93,19 @@
         <!-- Bootstrap core JavaScript
         ================================================== -->
         <!-- Placed at the end of the document so the pages load faster -->
-        <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
-        <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+        <script src="./jquery.min.js"></script>
+        <script src="./bootstrap.min.js"></script>
         <script type="text/javascript">
             $(document).ready(function() {
+                $('#creater-btn').onclick(() => {
+                    $.ajax({
+                        url: './site/new',
+                        method: 'POST',
+                        data: {
+                            name: $('#creater-sitename').val()
+                        }
+                    })
+                })
             })
         </script>
     </body>
